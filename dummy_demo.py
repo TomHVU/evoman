@@ -76,24 +76,28 @@ def simulation(env, x):
 # TODO 4: Perform mutation and or crossover (select from fittest parents?).
 # TODO 5: Repeat until a certain number of generations have passed.
 
+# Parameters
+
+# We can't edit the framework. However, we can change the output
+# of this function. In this way, we can change the way the fitness
+# function works. 
+# # runs simulation
+# def simulation(env,x):
+#     f,p,e,t = env.play(pcont=x)
+#     return f
 
 
+# # normalizes
+# def norm(x, pfit_pop):
 
+#     if ( max(pfit_pop) - min(pfit_pop) ) > 0:
+#         x_norm = ( x - min(pfit_pop) )/( max(pfit_pop) - min(pfit_pop) )
+#     else:
+#         x_norm = 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#     if x_norm <= 0:
+#         x_norm = 0.0000000001
+#     return x_norm
 
 # NUMPY CAN ACTUALLY JUST DO THIS BETTER.
 
@@ -130,7 +134,7 @@ def evaluate(x):
     
 # Not really sure what this does.
 # Does it select two actors from the population and compares them
-# (return the best one)?
+# (return the best one)? Yes, it compared two random actors. The best ones are already taken.
 # def tournament(pop):
 #     c1 = np.random.randint(0, pop.shape[0], 1)
 #     c2 = np.random.randint(0, pop.shape[0], 1)
