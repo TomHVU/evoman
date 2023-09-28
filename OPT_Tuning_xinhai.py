@@ -133,7 +133,39 @@ population_size = 100, generations = 50, const = 3, save_best=False):
     return logbook
 
 
-
+''' def grid_search(param_space, enemies, num_simulation):
+    best_params_for_each_enemy = {} 
+    
+    for enemy in enemies:
+        best_fitness_for_this_enemy = float('-inf')
+        best_params_for_this_enemy = None
+        
+        for params in product(*param_space.values()):
+            mutation_rate, crossover_prob, population_size, generations, const = params
+            
+            best_this_run_all_simulations = []
+            
+            for sim in range(num_simulation):
+                logbook1 = run_mu_plus_lambda(enemy, mutation_rate=mutation_rate,
+                                              Crossover_prob=crossover_prob, population_size=population_size,
+                                              generations=generations, const=const)
+                logbook2 = run_mu_comma_lambda(enemy, mutation_rate=mutation_rate,
+                                               Crossover_prob=crossover_prob, population_size=population_size,
+                                               generations=generations, const=const)
+                
+                best_this_run = max(max(logbook1.select("Fitness avg")), max(logbook2.select("Fitness avg")))
+                best_this_run_all_simulations.append(best_this_run)
+            
+            avg_best_this_run = sum(best_this_run_all_simulations) / num_simulation
+            
+            if avg_best_this_run > best_fitness_for_this_enemy:
+                best_fitness_for_this_enemy = avg_best_this_run
+                best_params_for_this_enemy = params
+                
+        # Store best params for this enemy
+        best_params_for_each_enemy[enemy] = best_params_for_this_enemy  
+    
+    return best_params_for_each_enemy '''
 
 
 
