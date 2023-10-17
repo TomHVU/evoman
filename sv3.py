@@ -20,7 +20,7 @@ if headless:
 
 # Genetic Algorithm parameters
 mutation_rate = 0.5
-population_size = 100
+population_size = 150
 generations = 70
 
 # Define the fitness function
@@ -225,7 +225,8 @@ def run_optimization(save_best=False):
     # ref_point = tools.uniform_reference_points(nobj=1, p=265)
     
     
-    toolbox.register("select", tools.selNSGA2)
+    toolbox.register("select", tools.selNSGA3, ref_points= tools.uniform_reference_points(nobj=3, p=12))
+    
     toolbox.register("evaluate", fitness)
     # Statistics setup
     stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -240,19 +241,19 @@ def run_optimization(save_best=False):
     # print(type(population))
     # exit()
     # print(population[0])
-    wel_performed = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution50_hof2.txt'))
-    wel_performed2 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/beat6.txt'))
-    wel_performed3 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution60_hof2.txt'))
-    wel_performed4 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution61_hof2.txt'))
-    wel_performed5 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution66_hof2.txt'))
-    wel_performed6 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution68_hof2.txt'))
-    wel_performed7 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution69_hof2.txt'))
-    wel_performed8 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution70_hof2.txt'))
-    wel_performed9 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution71_hof2.txt'))
-    wel_performed10 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution72_hof2.txt'))
-    wel_performed11 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution73_hof2.txt'))
-    wel_performed12 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution75_hof2.txt'))
-    wel_performed13 = creator.Individual(np.loadtxt(experiment_name + ' _solutions/best_solution76_hof2.txt'))
+    wel_performed = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution50_hof2.txt'))
+    wel_performed2 = creator.Individual(np.loadtxt(experiment_name + '_solutions/beat6.txt'))
+    wel_performed3 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution60_hof2.txt'))
+    wel_performed4 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution61_hof2.txt'))
+    wel_performed5 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution66_hof2.txt'))
+    wel_performed6 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution68_hof2.txt'))
+    wel_performed7 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution69_hof2.txt'))
+    wel_performed8 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution70_hof2.txt'))
+    wel_performed9 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution71_hof2.txt'))
+    wel_performed10 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution72_hof2.txt'))
+    wel_performed11 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution73_hof2.txt'))
+    wel_performed12 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution75_hof2.txt'))
+    wel_performed13 = creator.Individual(np.loadtxt(experiment_name + '_solutions/best_solution76_hof2.txt'))
     # population[0] = wel_performed.tolist()
     # print(population[0
     # for _ in range(20):
@@ -289,7 +290,7 @@ def run_optimization(save_best=False):
     toolbox.unregister("evaluate")
     toolbox.register("evaluate", fitness2)
 
-    _, logbook2 = algorithms.eaMuPlusLambda(population, toolbox, mu=population_size, lambda_=150, 
+    _, logbook2 = algorithms.eaMuCommaLambda(population, toolbox, mu=population_size, lambda_=200, 
                           cxpb=0.5, mutpb=mutation_rate, stats=stats, halloffame=hof2, verbose=False, 
                           ngen=generations)
     
@@ -298,7 +299,7 @@ def run_optimization(save_best=False):
             os.makedirs(experiment_name + ' solutions')
         # np.savetxt(experiment_name + f' solutions/best_solution34.txt', normalize(best_solution))
         # np.savetxt(experiment_name + f' solutions/best_solution63_hof2.txt', normalize(hof2[0]))
-        np.savetxt(experiment_name + f' _solutions/best_solution77_hof2.txt', hof2[0])
+        np.savetxt(experiment_name + f'_solutions/best_solution78_hof2.txt', hof2[0])
     # print(logbook)
     print(logbook2)
     return

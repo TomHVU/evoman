@@ -23,7 +23,7 @@ env = Environment(experiment_name=experiment_name,
                       visuals=False)
 
 
-sol = np.loadtxt(experiment_name + ' _solutions/best_solution50_hof2.txt')
+sol = np.loadtxt(experiment_name + '_solutions/best_solution50_hof2.txt')
 # sol = np.loadtxt(experiment_name + ' solutions/beat6.txt')
 # individual = 2*(sol - np.min(sol))/(np.max(sol) - np.min(sol)) - 1
 
