@@ -133,6 +133,7 @@ population_size = 100, generations = 50, const = 3, save_best=False):
     return logbook
 
 
+
 ''' def grid_search(param_space, enemies, num_simulation):
     best_params_for_each_enemy = {} 
     
@@ -166,7 +167,6 @@ population_size = 100, generations = 50, const = 3, save_best=False):
         best_params_for_each_enemy[enemy] = best_params_for_this_enemy  
     
     return best_params_for_each_enemy '''
-
 
 
 def grid_search(params, enemies, num_simulation):
