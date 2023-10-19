@@ -119,7 +119,7 @@ if __name__ == '__main__':
  
 
     logbook, best_solution = run_mu_plus_lambda_generalist(training_enemies, initial_diverse=1, mutation_rate=0.2, 
-                                 Crossover_prob=0.5, population_size=200, generations=100, const=3, save_best=True)
+                                 Crossover_prob=0.5, population_size=200, generations=20, const=3, save_best=True)
 
     total_gain, victory, fitness_values = validate_best_agent(best_solution, validation_enemies)
     print(f'Total gain: {total_gain}')
